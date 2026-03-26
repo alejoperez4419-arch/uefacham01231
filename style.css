@@ -1,0 +1,315 @@
+/* =========================
+   ADVANCED ROBOTIC CORE
+========================= */
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;900&family=Rajdhani:wght@300;500;700&display=swap');
+
+:root {
+  --main-white: #ffffff;
+  --bg-light: #f4f7f9;
+  --accent-cyan: #00d2ff;
+  --accent-blue: #007aff;
+  --dark-text: #1a1c20;
+  --glass-border: rgba(255, 255, 255, 0.8);
+  --panel-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.1);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Quicksand', sans-serif;
+  background: #00005C;
+  background: linear-gradient(90deg, rgba(0, 0, 92, 1) 0%, rgba(8, 17, 184, 1) 100%);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-dark);
+
+}
+
+
+/* =========================
+   THE MECHA-STATION (CONTAINER)
+========================= */
+.container {
+  width: 100%;
+  max-width: 460px;
+  padding: 20px;
+  position: relative;
+}
+
+.content-box {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(15px);
+  padding: 50px 30px;
+  text-align: center;
+  position: relative;
+  border-radius: 10%;
+  border: 1px solid var(--glass-border);
+  box-shadow: 2px 2px 20px rgb(255, 255, 255);
+
+}
+
+/* Marco exterior decorativo (Líneas de circuitos) */
+.container::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border: 1px solid rgba(0, 210, 255, 0.2);
+  clip-path: polygon(8% 0, 92% 0, 100% 8%, 100% 92%, 92% 100%, 8% 100%, 0 92%, 0 8%);
+  transform: scale(1.03);
+  z-index: -1;
+}
+
+/* Detalles de esquinas (Brackets) */
+.corner-decor {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  border: 2px solid var(--accent-cyan);
+  pointer-events: none;
+}
+
+.top-l {
+  top: 0;
+  left: 0;
+  border-right: none;
+  border-bottom: none;
+}
+
+.bottom-r {
+  bottom: 0;
+  right: 0;
+  border-left: none;
+  border-top: none;
+}
+
+/* =========================
+   INTERFACE TEXT & HEADERS
+========================= */
+.section {
+  display: none;
+  flex-direction: column;
+  animation: slideInHUD 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.section.active {
+  display: flex;
+}
+
+@keyframes slideInHUD {
+  from {
+    opacity: 0;
+    transform: translateY(30px) rotateX(-15deg);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) rotateX(0deg);
+  }
+}
+
+h2 {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 26px;
+  font-weight: 900;
+  letter-spacing: 2px;
+  color: #000;
+  text-transform: uppercase;
+  margin-bottom: 5px;
+}
+
+p {
+  font-family: 'Rajdhani', sans-serif;
+  font-weight: 700;
+  font-size: 12px;
+  color: var(--accent-blue);
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  opacity: 0.8;
+}
+
+/* =========================
+   INPUT MODULE (DATA STREAM)
+========================= */
+.input-group {
+  position: relative;
+  margin-top: 35px;
+}
+
+input {
+  width: 100%;
+  padding: 18px 25px;
+  background: #fdfdfd;
+  border: 2px solid #eef1f4;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 16px;
+  color: #000;
+  text-align: center;
+  transition: all 0.4s ease;
+  clip-path: polygon(5% 0, 100% 0, 100% 70%, 95% 100%, 0 100%, 0 30%);
+}
+
+input:focus {
+  outline: none;
+  border-color: var(--accent-cyan);
+  box-shadow: 0 0 20px rgba(0, 210, 255, 0.15);
+  background: #fff;
+}
+
+/* =========================
+   ACTION BUTTON (SYSTEM BOOT)
+========================= */
+button {
+  margin-top: 25px;
+  width: 100%;
+  padding: 20px;
+  background: #000;
+  color: #fff;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  border: none;
+  cursor: pointer;
+  position: relative;
+  transition: 0.3s;
+  clip-path: polygon(0 0, 95% 0, 100% 30%, 100% 100%, 5% 100%, 0 70%);
+}
+
+button:hover {
+  background: var(--accent-cyan);
+  color: #000;
+  transform: translateY(-3px);
+  box-shadow: 0 10px 30px rgba(0, 210, 255, 0.4);
+}
+
+button::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+  transition: 0.5s;
+}
+
+.titulo2 {
+  width: 100%;
+}
+
+button:hover::before {
+  left: 100%;
+}
+
+/* =========================
+   CARDS GRID (COMPONENT SLOTS)
+========================= */
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+  margin-top: 30px;
+}
+
+.card {
+  background: #fff;
+  border: 1px solid #dbe3eb;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+}
+
+.card img {
+  width: 100%;
+  border-radius: 4px;
+  transition: 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-5px) scale(1.05);
+  border-color: var(--accent-cyan);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+}
+
+.card:hover img {
+  filter: grayscale(0);
+}
+
+.card.selected {
+  border: 2px solid var(--accent-cyan);
+  background: rgba(0, 210, 255, 0.02);
+}
+
+.card.selected::after {
+  content: "LINKED";
+  position: absolute;
+  bottom: -18px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 8px;
+  font-family: 'Orbitron';
+  color: var(--accent-cyan);
+}
+
+/* =========================
+   LOADING SCANNER
+========================= */
+.spinner {
+  width: 70px;
+  height: 70px;
+  margin: 40px auto;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.spinner::before {
+  content: "";
+  width: 100%;
+  height: 2px;
+  background: var(--accent-cyan);
+  position: absolute;
+  box-shadow: 0 0 15px var(--accent-cyan);
+  animation: scanLine 2s ease-in-out infinite;
+}
+
+@keyframes scanLine {
+
+  0%,
+  100% {
+    top: 0%;
+  }
+
+  50% {
+    top: 100%;
+  }
+}
+
+#loadingText {
+  font-family: 'Orbitron';
+  font-size: 11px;
+  letter-spacing: 4px;
+  color: #000;
+  margin-top: 15px;
+}
+
+/* =========================
+   LOGO AREA
+========================= */
+.logo {
+  width: 100%;
+  margin: 0 auto 20px;
+  display: block;
+}
