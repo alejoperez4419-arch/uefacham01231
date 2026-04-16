@@ -30,7 +30,7 @@ function goToCards() {
     card.className = "card";
     card.innerHTML = `
       <img src="${item.img}">
-      <div style="margin-top:6px">${item.amount} ${item.type}</div>
+      <div style="margin-top:6px; color:"#007aff;">${item.amount}</div>
     `;
     card.onclick = () =>
       toggleSelect(card, `${item.amount}|${item.type}|${item.img}`);
