@@ -91,7 +91,7 @@ function showFinal() {
       const [amount, type, img] = item.split("|");
       card.innerHTML = `
         <img src="${img}">
-        <div style="margin-top:6px">${amount} ${type}</div>
+        <div style="margin-top:6px";>${amount}</div>
       `;
     } else {
       const num = item.replace("card", "");
