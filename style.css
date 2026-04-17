@@ -24,7 +24,7 @@
 ========================= */
 body {
   font-family: 'Rajdhani', sans-serif;
-  background: radial-gradient(circle at 20% 20%, #0a0f3c, #05071a 70%);
+  background: radial-gradient(circle at 10% 10%, #010319, #767897 100%);
   min-height: 100vh;
   display: flex;
   align-items: center;
@@ -62,7 +62,7 @@ body {
   border-radius: 25px;
   padding: 40px 25px;
   border: 1px solid var(--border);
-  box-shadow: 0 0 40px rgba(0,0,0,0.6);
+  box-shadow: 0 0 40px rgba(0, 0, 0, 0.6);
   text-align: center;
 }
 
@@ -96,7 +96,7 @@ input {
   padding: 16px;
   border-radius: 12px;
   border: 1px solid var(--border);
-  background: rgba(255,255,255,0.05);
+
   color: #fff;
   text-align: center;
   font-family: 'Orbitron';
@@ -107,6 +107,7 @@ input:focus {
   outline: none;
   border-color: var(--accent);
   box-shadow: 0 0 15px var(--accent-soft);
+  color: black;
 }
 
 /* =========================
@@ -143,7 +144,7 @@ button:hover {
 }
 
 .card {
-  background: rgba(255,255,255,0.05);
+  background: rgba(255, 255, 255, 0.05);
   border-radius: 12px;
   padding: 5px;
   cursor: pointer;
@@ -181,7 +182,9 @@ button:hover {
 }
 
 @keyframes spin {
-  to { transform: rotate(360deg); }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 #loadingText {
@@ -205,8 +208,15 @@ button:hover {
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; transform: translateY(15px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .logo {
